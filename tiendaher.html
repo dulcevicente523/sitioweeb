@@ -1,0 +1,163 @@
+<DOCTYPE html>
+    <html lang="es">
+        <head>
+            <meta  charset="UTF-8">
+            <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+            <title>tabla de  de ventas con  carrito</title>
+            <link real="stylesheet" href="styles.css">
+            <style>
+                /*Estilos CSS adicional */
+                body{
+                    font-family: Arial, sans-serif;
+                    margin:0;
+                    padding: 0;
+                }
+                h2{
+                    margin-top: 20px;
+                    text-align:center;
+                }
+                table{
+                    width: 100%;
+                    border-collapse: collapse ;
+                    margin-bottom: 20px;
+                }
+                th, td{
+                    padding: 8px;
+                    border:1px solid #ddd;
+                    text-align: left;
+                }
+                th{
+                    background-color: #f2f2f2;
+                }
+                tr:hover{
+                    background-color: #f5f5f5;
+                }
+                input[type="text"]{
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    box-sizing: border-box;
+                }
+                button{
+                    display: block;
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+                button:hover{
+                    background-color: #45a049;
+                }
+                #carrito{
+                    overflow-x:auto;
+                }
+                </style>
+                </head>
+                <body>
+
+                    <h2>VENTA HERBOLARIA MAZAHUA</h2>
+
+                    <input type="text" id ="busqueda" placeholder="buscar..." onkeyup="buscar()">
+
+                    <div style="overflow-x: auto;">
+                    <table id="miTabla">
+                        <thead>
+                            <tr>
+                                <th>producto</th>
+                                <th>Descripcion</th>
+                                <th>precio</th>
+                                <th> Productos</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="ima/sabila.jpg" alt="producto 1">SABILA</td>
+                            <td>
+                                La sábila, también conocida como aloe vera, es una planta suculenta con muchas propiedades beneficiosas. Sus hojas contienen un gel transparente que se utiliza comúnmente en productos de cuidado de la piel y el cabello debido a sus propiedades hidratantes y calmantes. También se ha utilizado tradicionalmente para aliviar quemaduras leves, irritaciones en la piel y cortes.</td>
+                            <td>15</td>
+                            <td>50</td>
+                            <td><button onclick="agregarAlcarrito(1)">Agregar al carrito</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="ima/manzanilla.jpg" alt="producto 2">MANZANILLA</td>
+                            <td>La manzanilla es una planta con florecillas de blancos pétalos,
+                                parecidas a las margaritas, que se utiliza sobre todo con fines medicinales
+                                y terapéuticos. Su nombre se debe a que su aroma recuerda al de una manzana.
+                                La variedad de usos que se puede dar a esta hierba la convierte 
+                                en un remedio natural indispensable</td>
+                            <td>18</td>
+                            <td>80</td>
+                            <td><button onclick="agregarAlcarrito(2)">Agregar al carrito</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="ima/gen1.jpg" alt="producto 3">JENGIBRE</td>
+                            <td>El jengibre es una planta milenaria de origen oriental 
+                                llena de beneficios y propiedades,entre las más conocidas
+                                 es que combate de forma natural los resfriados.</td>
+                            <td>30</td>
+                            <td>90</td>
+                            <td><button onclick="agregarAlcarrito(3)">Agregar al carrito</button></td>
+                        </tr>
+                        <td><img src="ima/romr.jpg" alt="producto 4">ROMERO</td>
+                            <td>El romero es carminativo, digestivo y antiespasmódico, 
+                                y tiene propiedades coleréticas, colagogas y hepatoprotectoras. </td>
+                            <td>22</td>
+                            <td>50</td>
+                            <td><button onclick="agregarAlcarrito(4)">Agregar al carrito</button></td>
+                        </tr>
+                        <td><img src="ima/ruda1.jpg" alt="producto 5">RUDA</td>
+                            <td>la ruda reduce los dolores de cabeza y la sensación de irritabilidad, 
+                                periodo menstrual y del síndrome menstrual. 
+                                También se emplea en casos de amenorrea. 
+                                Sedante: debido a que ejerce un efecto calmante y relajante,
+                                 la ruda se utiliza para disminuir la sensación de dolor en golpes o heridas</td>
+                            <td>30</td>
+                            <td>44</td>
+                            <td><button onclick="agregarAlcarrito(5)">Agregar al carrito</button></td>
+                        </tr>
+                        <td><img src="ima/altamisa.jpg" alt="producto 6">ARTESISA</td>
+                            <td> la artemisia se usa hoy en día en caso de cuadros sintomáticos muy variados.
+                                 Esta planta milagrosa limpia los intestinos, la sangre y los órganos internos;
+                                  activa nuestras defensas e incluso contrarresta la demencia y la enfermedad de Alzheimer</td>
+                            <td>21</td>
+                            <td>80</td>
+                            <td><button onclick="agregarAlcarrito(6)">Agregar al carrito</button></td>
+                        </tr>
+                        <!--Agrega mas filas segun necesites-->
+                        </tbody>
+                        </table>
+                        </div>
+
+                        <h2>carrito</h2>
+                        <div style="overflow-x: auto;">
+                        <table id="carrito">
+                            <thead>
+                                <tr>
+                                    <th>producto</th>
+                                    <th>Descripcion</th>
+                                    <th>precio</th>
+                                    <th>cantidad</th>
+                                    <th>total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="carrito-body">
+                                <!--Filas de productos en el  carrito-->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" style="text-align: right;">Total</td>
+                                    <td id="total-carrito"></td>
+                                </tr>
+                            </tfoot>
+                            </table>
+                            </div>
+
+                            <button onclick="abrirVentanaPago()">Pagar</button>
+
+                            <script src="SCRIPT2.js"></script>
+                            </body>
+                            </html>

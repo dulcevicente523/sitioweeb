@@ -1,0 +1,153 @@
+<DOCTYPE html>
+    <html lang="es">
+        <head>
+            <meta  charset="UTF-8">
+            <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+            <title>tabla de  carrito</title>
+            <link real="stylesheet" href="styles.css">
+            <style>
+                /*Estilos CSS adicional */
+                body{
+                    font-family: Arial, sans-serif;
+                    margin:0;
+                    padding: 0;
+                }
+                h2{
+                    margin-top: 20px;
+                    text-align:center;
+                }
+                table{
+                    width: 100%;
+                    border-collapse: collapse ;
+                    margin-bottom: 20px;
+                }
+                th, td{
+                    padding: 8px;
+                    border:1px solid #ddd;
+                    text-align: left;
+                }
+                th{
+                    background-color: #f2f2f2;
+                }
+                tr:hover{
+                    background-color: #f5f5f5;
+                }
+                input[type="text"]{
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    box-sizing: border-box;
+                }
+                button{
+                    display: block;
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+                button:hover{
+                    background-color: #45a049;
+                }
+                #carrito{
+                    overflow-x:auto;
+                }
+                </style>
+                </head>
+                <body>
+
+                    <h2>VENTA</h2>
+
+                    <input type="text" id ="busqueda" placeholder="buscar..." onkeyup="buscar()">
+
+                    <div style="overflow-x: auto;">
+                    <table id="miTabla">
+                        <thead>
+                            <tr>
+                                <th>producto</th>
+                                <th>Descripcion</th>
+                                <th>precio</th>
+                                <th> Producto</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="ima/mole rojo.jpg" alt="producto 1">MOLE ROJO</td>
+                            <td>El mole rojo es un platillo tradicional mexicano que se destaca por su sabor complejo y su rica historia culinaria. Se caracteriza por ser una salsa espesa y sabrosa que combina una amplia variedad de ingredientes, como chiles secos, especias, frutas, frutos secos, chocolate y otros condimentos</td>
+                            <td>50</td>
+                            <td>1kg</td>
+                            <td><button onclick="agregarAlcarrito(1)">Agregar al carrito</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="ima/pico_gallo.jpg" alt="producto 2">PICO DE GALLO</td>
+                            <td>El pico de gallo es una salsa fresca y colorida que forma parte de la gastronomía mexicana y centroamericana. También conocida como salsa mexicana o salsa fresca, el pico de gallo se caracteriza por su sabor vibrante y sus ingredientes crujientes y frescos.
+                            </td>
+                            <td>25</td>
+                            <td>1/2kg</td>
+                            <td><button onclick="agregarAlcarrito(2)">Agregar al carrito</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="ima/tortillas.jpg" alt="producto 3">TORTILLAS</td>
+                            <td>Las tortillas hechas a mano son un elemento fundamental en la gastronomía mexicana y centroamericana. Se trata de discos delgados de masa de maíz o harina de trigo que se preparan de forma artesanal, sin la ayuda de maquinaria, extendiendo y aplanando la masa con las manos</td>
+                            <td>18</td>
+                            <td>1Kg</td>
+                            <td><button onclick="agregarAlcarrito(3)">Agregar al carrito</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="ima/tamales1.jpg" alt="producto 4">TAMALES</td>
+                            <td>Los tamales son un platillo tradicional de la gastronomía mexicana y de otros países de América Latina. Consisten en una masa de maíz rellena de diversos ingredientes, envuelta en hojas de maíz o plátano y cocida al vapor. Los tamales pueden tener una amplia variedad de rellenos, que van desde carne de cerdo, pollo o res, hasta vegetales, chiles, quesos, frutas y salsas.
+                            </td>
+                            <td>19</td>
+                            <td>1</td>
+                            <td><button onclick="agregarAlcarrito(4)">Agregar al carrito</button></td>
+                        </tr>
+                        <td><img src="ima/pinole.jpg" alt="producto 5">PINOLE</td>
+                            <td>El pinole o pinol es un alimento americano de origen prehispánico. Esta harina puede consumirse sola, como dulce; o bien servir como base para una bebida del mismo nombre, que se bebe fría o caliente</td>
+                            <td>15</td>
+                            <td>1/4kg</td>
+                            <td><button onclick="agregarAlcarrito(5)">Agregar al carrito</button></td>
+                        </tr>
+                        <td><img src="ima/pulque.jpg" alt="producto 6">PULQUE</td>
+                            <td>El pulque es una bebida  tradicional mexicana que se obtiene a partir de la fermentación del aguamiel, que es el líquido dulce y acuoso que se extrae del maguey o agave. Esta bebida ha sido consumida en México desde la época prehispánica y sigue siendo popular en algunas regiones del país.
+                            </td>
+                            <td>30</td>
+                            <td>1L</td>
+                            <td><button onclick="agregarAlcarrito(5)">Agregar al carrito</button></td>
+                        </tr>
+                        <!--Agrega mas filas segun necesites-->
+                        </tbody>
+                        </table>
+                        </div>
+
+                        <h2>carrito</h2>
+                        <div style="overflow-x: auto;">
+                        <table id="carrito">
+                            <thead>
+                                <tr>
+                                    <th>producto</th>
+                                    <th>Descripcion</th>
+                                    <th>precio</th>
+                                    <th>cantidad</th>
+                                    <th>total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="carrito-body">
+                                <!--Filas de productos en el  carrito-->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" style="text-align: right;">Total</td>
+                                    <td id="total-carrito"></td>
+                                </tr>
+                            </tfoot>
+                            </table>
+                            </div>
+
+                            <button onclick="abrirVentanaPago()">Pagar</button>
+
+                            <script src="SCRIPT2.js"></script>
+                            </body>
+                            </html>

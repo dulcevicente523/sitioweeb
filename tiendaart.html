@@ -1,0 +1,160 @@
+<DOCTYPE html>
+    <html lang="es">
+        <head>
+            <meta  charset="UTF-8">
+            <meta name ="viewport" content="width=device-width, initial-scale=1.0">
+            <title>tabla de  de ventas con  carrito</title>
+            <link real="stylesheet" href="styles.css">
+            <style>
+                /*Estilos CSS adicional */
+                body{
+                    font-family: Arial, sans-serif;
+                    margin:0;
+                    padding: 0;
+                }
+                h2{
+                    margin-top: 20px;
+                    text-align:center;
+                }
+                table{
+                    width: 100%;
+                    border-collapse: collapse ;
+                    margin-bottom: 20px;
+                }
+                th, td{
+                    padding: 8px;
+                    border:1px solid #ddd;
+                    text-align: left;
+                }
+                th{
+                    background-color: #f2f2f2;
+                }
+                tr:hover{
+                    background-color: #f5f5f5;
+                }
+                input[type="text"]{
+                    width: 100%;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    box-sizing: border-box;
+                }
+                button{
+                    display: block;
+                    width: 100%;
+                    padding: 10px;
+                    background-color: #4CAF50;
+                    color: white;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+                button:hover{
+                    background-color: #45a049;
+                }
+                #carrito{
+                    overflow-x:auto;
+                }
+                </style>
+                </head>
+                <body>
+
+                    <h2>VENTAS ARTESANIAS MAZAHUA</h2>
+
+                    <input type="text" id ="busqueda" placeholder="buscar..." onkeyup="buscar()">
+
+                    <div style="overflow-x: auto;">
+                    <table id="miTabla">
+                        <thead>
+                            <tr>
+                                <th>producto</th>
+                                <th>Descripcion</th>
+                                <th>precio</th>
+                                <th> Articulos</th>
+                                <th>Accion</th>
+                            </tr>
+                        </thead>
+                    <tbody>
+                        <tr>
+                            <td><img src="ima/muñe.jpg" alt="producto 1">MUÑECA MARIA</td>
+                            <td>Actualmente las muñecas María son una representación artesanal de la mexicanidad, por lo que se fomenta su creación sin necesidades de máquinas ni pegamentos. El objetivo es recuperar la pasión, el amor y el valor de las mujeres mazahuas que se dedicaron a transmitir su sabiduría de bordado en bordado, de hilo en hilo</td>
+                            <td>195</td>
+                            <td>1pz</td>
+                            <td><button onclick="agregarAlcarrito(1)">Agregar al carrito</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="ima/canastas.jpg" alt="producto 2">CANASTAS</td>
+                            <td> Las canastas elaborados por artesanos son pequeñas cestas tejidas a mano con fibras naturales, como el mimbre o la palma, que imitan la forma y apariencia de los hongos silvestres llamados chiquihuites. Estas cestas suelen tener un diseño detallado que simula fielmente las características de los hongos, como su sombrero en forma de embudo y sus tonalidades naturales.
+                            </td>
+                            <td>80</td>
+                            <td>1pz</td>
+                            <td><button onclick="agregarAlcarrito(2)">Agregar al carrito</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="ima/arete.jpg" alt="producto 3">ARETES</td>
+                            <td>Los artesanos de la familia Mazahua representan 
+                                tortolitos en estos aretes tipo argolla hechos a mano.
+                                 Se posan en un nido de plata esterlina rodeado de diminutas espirales.
+                                  La mayoría de las mujeres mazahuas usan aretes en forma de media luna,
+                                   ya que son regalos del marido en lugar de un anillo de compromiso</td>
+                            <td>120</td>
+                            <td>1pz</td>
+                            <td><button onclick="agregarAlcarrito(3)">Agregar al carrito</button></td>
+                        </tr>
+                        <tr>
+                            <td><img src="ima/bordados.jpg" alt="producto 4">BORDADOS</td>
+                            <td>se puede observar desde la elaboración de tapetes, colchas,
+                                 manteles, servilletas y el quexquemetl atuendo más significativo, 
+                                 principalmente, los cuales son bordados a mano por mujeres que dan vida
+                                  a figuras zoomorfas, fitomorfas, principalmente, los cuales son bordados a mano</td>
+                            <td>300</td>
+                            <td>1pz</td>
+                            <td><button onclick="agregarAlcarrito(4)">Agregar al carrito</button></td>
+                        </tr>
+                        <td><img src="ima/rebozo.jpg" alt="producto 5">REBOZOS</td>
+                        <td>Los rebozos son prendas tradicionales mexicanas que se utilizan tanto por su funcionalidad como por su valor cultural y estético. Se trata de una pieza de tela larga y rectangular, similar a una bufanda o chal, que suele estar elaborada en telares de forma artesanal.</td>
+                        <td>250</td>
+                        <td>1pz</td>
+                        <td><button onclick="agregarAlcarrito(5)">Agregar al carrito</button></td>
+                    </tr>
+                    <td><img src="ima/platos.jpg" alt="producto 6">PLATOS DE BARRO</td>
+                    <td>Los platos hechos con barro artesanales son piezas de vajilla tradicionales que se elaboran a mano utilizando técnicas ancestrales de alfarería. Estos platos suelen ser de arcilla o barro cocido y se caracterizan por su aspecto rústico y su estilo único, que refleja la creatividad y el talento de los artesanos que los crean.
+
+                    </td>
+                    <td>70</td>
+                    <td>1pz</td>
+                    <td><button onclick="agregarAlcarrito(6)">Agregar al carrito</button></td>
+                </tr>
+                        <!--Agrega mas filas segun necesites-->
+                        </tbody>
+                        </table>
+                        </div>
+
+                        <h2>carrito</h2>
+                        <div style="overflow-x: auto;">
+                        <table id="carrito">
+                            <thead>
+                                <tr>
+                                    <th>producto</th>
+                                    <th>Descripcion</th>
+                                    <th>precio</th>
+                                    <th>cantidad</th>
+                                    <th>total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="carrito-body">
+                                <!--Filas de productos en el  carrito-->
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="4" style="text-align: right;">Total</td>
+                                    <td id="total-carrito"></td>
+                                </tr>
+                            </tfoot>
+                            </table>
+                            </div>
+
+                            <button onclick="abrirVentanaPago()">Pagar</button>
+
+                            <script src="SCRIPT2.js"></script>
+                            </body>
+                            </html>
